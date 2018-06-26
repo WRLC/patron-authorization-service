@@ -1,0 +1,14 @@
+{
+  "name": "patron-authorization-service",
+  "version": "1.0.0",
+  "description": "Patron authorization lookup service",
+  "author": "Ian Hardy",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "request": "^2.87.0"
+  }
+}
