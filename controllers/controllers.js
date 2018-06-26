@@ -8,12 +8,13 @@ exports.doc_message = function(req, res) {
 };
 
 exports.patron_lookup = function(req, res) {
-		// collect parameters
-		if (!req.query.inst)
-			res.status(400).json({message: 'No institution(s) in request. \
-				Include it in your query string: ?inst=xxxxxx'})
+		// collect parameters and stop if request is malformed
+		if (!config.api_keys.hasOwnProperty(req.query.inst))
+			return res.status(400).json({message: 'Unknown institution'})
+			//res.status(400).json({message: 'No institution in request. \
+			//	Include it in your query string: ?inst=xxxxxx'})
 		if (!req.query.uid)
-			res.status(400).json({message: 'No uid in request. \
+			return res.status(400).json({message: 'No uid in request. \
 				Include it in your query string: ?uid=xxxxxx'})
 		else
 			api_call = [
@@ -30,7 +31,7 @@ exports.patron_lookup = function(req, res) {
 				return res.status(500).send(err);
 			// if lookup didn't find anyone return 404 needs update
 			if (body.errorsExist == true)
-			    res.status(404).send(body);
+			    return res.status(404).send(body);
 			else
 				var filtered_attributes = {};
 			    var full_json = JSON.parse(body)

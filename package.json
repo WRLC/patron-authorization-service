@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Patron authorization lookup service",
   "author": "Ian Hardy",
+  "repository" : "https://github.com/WRLC/patron-authorization-service",
+  "license" : "0BSD",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
