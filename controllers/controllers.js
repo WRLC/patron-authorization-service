@@ -30,7 +30,7 @@ exports.patron_lookup = function(req, res) {
 			if (error)
 				return res.status(500).send(err);
 			// if lookup didn't find anyone return 404 needs update
-			if (body.errorsExist == true)
+			if (JSON.parse(body).errorsExist == true)
 			    return res.status(404).send(body);
 			else
 				var filtered_attributes = {};
@@ -38,8 +38,9 @@ exports.patron_lookup = function(req, res) {
 			    filtered_attributes.primary_id = full_json.primary_id;
 			    filtered_attributes.full_name = full_json.full_name;
 			    filtered_attributes.user_group = full_json.user_group;
+			    filtered_attributes.user_role = full_json.user_role;
 			    filtered_attributes.status = full_json.status;
-			    res.status(200).send(filtered_attributes)
+			    return res.status(200).send(filtered_attributes)
 
 		});
 };
