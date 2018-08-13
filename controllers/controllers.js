@@ -40,6 +40,7 @@ exports.patron_lookup = function(req, res) {
 			    filtered_attributes.user_group = full_json.user_group;
 			    filtered_attributes.user_role = full_json.user_role;
 			    filtered_attributes.status = full_json.status;
+			    filtered_attributes.user_block = full_json.user_block;
 			    return res.status(200).send(filtered_attributes)
 
 		});
